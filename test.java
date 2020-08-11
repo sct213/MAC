@@ -4,6 +4,7 @@ public class test {
 	}
 	public static void main(String[] args) {
 	int test1;
+  int test2;
 	sum();
 	}
 }
