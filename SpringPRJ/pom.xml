@@ -8,24 +8,51 @@
 	<packaging>war</packaging>
 	<properties>
 		<java-version>1.8</java-version>
-		<org.springframework-version>4.3.7.RELEASE</org.springframework-version>
+		<org.springframework-version>4.2.9.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<slf4j.version>1.7.25</slf4j.version>
 		<log4j.version>2.11.0</log4j.version>
 
 	</properties>
 
-	<!-- 오라클에서 메이븐 저장소에 제공을 하고 있지 않기 때문에, 메이븐 사설 저장소 사용함 -->
-	<repositories>
-		<repository>
-			<id>oracle</id>
-			<name>ORACLE JDBC Repository</name>
-			<url>http://maven.jahia.org/maven2</url>
-		</repository>
-	</repositories>
-
 	<dependencies>
-
+		
+		<!-- Redis Value를 json형태로 표현하기 위해 추가 -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.9</version>
+		</dependency>
+		
+		<!-- Redis 연동을 위한 Driver -->
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>2.10.2</version>
+		</dependency>
+		
+		<!-- Redis와 Spring의 연동 -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-redis</artifactId>
+			<version>1.8.23.RELEASE</version>
+		</dependency>
+		
+		<!-- Mysql -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<!-- <version>5.1.44</version> -->
+			<version>8.0.13</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>junit</groupId>
+		    <artifactId>junit</artifactId>
+		    <version>4.12</version>
+		    <scope>test</scope>
+		</dependency>  
+		
 		<!-- logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -114,13 +141,6 @@
 			<version>1.4</version>
 		</dependency>
 
-		<!-- Oracle -->
-		<dependency>
-			<groupId>com.oracle</groupId>
-			<artifactId>ojdbc6</artifactId>
-			<version>12.1.0.1</version>
-		</dependency>
-		
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
 		    <groupId>mysql</groupId>
@@ -128,13 +148,6 @@
 		    <version>8.0.19</version>
 		</dependency>
 		
-		<!-- 오라클 DBCP 관리를 위한 c3p0 -->
-		<dependency>
-			<groupId>c3p0</groupId>
-			<artifactId>c3p0</artifactId>
-			<version>0.9.1.2</version>
-		</dependency>
-
 		<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>

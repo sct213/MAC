@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- JAVA와 연결할 Mapper 파일 설정 -->
+<mapper namespace="poly.persistance.mapper.IUserMapper">
+
+	<!-- 유저 가져오기 쿼리 -->
+	<select id="getUserInfo" resultType="UserDTO" parameterType="UserDTO">
+	SELECT 
+		USER_ID,
+		USER_PWD,
+		USER_EMAIL
+	FROM 
+		USERINFO
+	WHERE 
+		USER_ID = #{user_id} AND USER_PWD = #{user_pwd}
+	</select>
+	
+	<select id="test" resultType="String">
+	SELECT 
+		user_name
+	FROM 
+		new_table
+	WHERE 
+		user_no = 123
+	</select>
+	
+	<insert id="UserSignUp" parameterType="UserDTO" >
+	INSERT INTO 
+		USERINFO(
+		USER_ID,
+		USER_PWD,
+		USER_EMAIL,
+		USER_AGE,
+		USER_GENDER,
+		USER_INTEREST
+		
+		)VALUES(
+		#{user_id},
+		#{user_pwd},
+		#{user_email},
+		#{user_age},
+		#{user_gender},
+		#{user_interest}
+		
+		)
+	</insert>
+	
+	<select id="idCheck" resultType="UserDTO" parameterType="UserDTO" >
+	SELECT
+		USER_ID
+	FROM
+		USERINFO
+	WHERE
+		USER_ID = #{user_id}
+	</select>
+	
+	<select id="emailCheck" resultType="UserDTO" parameterType="UserDTO" >
+	SELECT
+		USER_EMAIL
+	FROM
+		USERINFO
+	WHERE
+		USER_EMAIL = #{user_email}
+	</select>
+	
+	<update parameterType="UserDTO" id="insertAuthNum">
+	UPDATE 
+	USERINFO
+	SET
+	USER_AUTHNUM = #{user_authNum}
+	WHERE
+	USER_EMAIL=#{user_email}
+	</update>
+
+	<select parameterType="UserDTO" resultType="UserDTO" id="authNumCheck">
+	SELECT
+	USER_AUTHNUM
+	FROM
+	USERINFO
+	WHERE
+	USER_AUTHNUM = #{user_authNum}
+	</select>
+	<select parameterType="UserDTO" resultType="UserDTO" id="Userinquire">
+	SELECT
+	USER_ID,USER_PWD
+	FROM
+	USERINFO
+	WHERE
+	USER_PWD = #{user_pwd} and USER_ID = #{user_id} </select>
+	
+	<delete parameterType="userDTO" id="deleteUser">
+	DELETE FROM
+	USERINFO
+	WHERE
+	USER_ID = #{user_id}
+	</delete>
+	
+	<select parameterType="UserDTO" resultType="UserDTO" id="getUserCorrection">
+	SELECT
+	USER_EMAIL,USER_GENDER,USER_AGE,USER_INTEREST
+	FROM
+	USERINFO
+	WHERE
+	USER_ID = #{user_id} 
+	</select>
+
+	<update parameterType="UserDTO" id="setUserCorrection">
+	UPDATE USERINFO
+	SET
+	USER_GENDER = #{user_gender},USER_AGE=#{user_age}
+	WHERE
+	USER_ID=#{user_id} 
+	</update>
+
+	<update parameterType="UserDTO" id="pwdChange">
+	UPDATE USERINFO
+	SET
+	USER_PWD = #{user_pwd}
+	WHERE
+	USER_ID = #{user_id} 
+	</update>
+
+	<update parameterType="UserDTO" id="updateInterest">
+	UPDATE USERINFO
+	SET
+	USER_INTEREST = #{user_interest}
+	WHERE
+	USER_ID = #{user_id} 
+	</update>
+	
+</mapper>

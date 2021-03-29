@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- JAVA와 연결할 Mapper 파일 설정 -->
+<mapper namespace="poly.persistance.mapper.INewsMapper">
+
+	<insert id="InsertNewsInfo" parameterType="NewsDTO">
+		INSERT INTO 
+			NEWS_INFO
+			(
+				NEWS_TITLE,
+				NEWS_CONTENTS,
+				NEWS_URL,
+				NEWS_NAME
+			)
+		VALUES(
+				#{news_title},
+				#{news_contents},
+				#{news_url},
+				#{news_name}
+				
+		)
+	</insert>
+	<select id="getNewsInfoFromDB" resultType="NewsDTO">
+	SELECT * 
+	FROM 
+		THE.NEWS_INFO
+	ORDER BY NEWS_INSERTDATE DESC
+	limit 4;
+	</select>
+</mapper>

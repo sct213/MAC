@@ -22,6 +22,8 @@
 
 	<context:component-scan base-package="poly.service" />
 	<context:component-scan base-package="poly.persistance.mapper" />
+	<!-- Service에서 Redis를 호출할 때 Redis 사용 객체를 싱글톤으로 로딩하기 위해 설정 추가 -->
+	<context:component-scan base-package="poly.persistance.redis" />
  	
 	<!-- ViewResolver : 뷰 선택자 -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
