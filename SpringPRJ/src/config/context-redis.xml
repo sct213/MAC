@@ -12,12 +12,9 @@
     <bean id="jedisConnectionFactory"
 		class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" 
 		p:usePool="true"  p:hostName="192.168.***.***" p:port="6379" />
-
     
     <!-- 톰켓을 부팅할 때 스프링이 실행되면서, 자동으로 redisTemplate라는 이름으로 RedisDB를 제어하는 자바객체가 메모리에 생성됨 -->
 	<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate" 
 			p:connectionFactory-ref="jedisConnectionFactory" />
-
-    
 </beans>
 
