@@ -154,7 +154,7 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 		
 	<!--docBase: 웹 어플리케이션이 위치한 경로를 의미 -->
-      <Context docBase="SpringPRJ" path="/SpringForOracle" reloadable="true" source="org.eclipse.jst.jee.server:SpringPRJ"/></Host>
+      <Context docBase="SpringPRJ" path="/" reloadable="true" source="org.eclipse.jst.jee.server:SpringPRJ"/></Host>
     </Engine>
   </Service>
 </Server>

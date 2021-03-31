@@ -22,7 +22,7 @@ public class MyRedisController {
 	private IMyRedisService myRedisService;
 	
 	// 빅데이터 처리를 위함 
-	@RequestMapping(value = "myRedis/test")
+	@RequestMapping(value="myRedis/test")
 	@ResponseBody
 	public String myRedis(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		log.info(this.getClass().getName() + ".myRedis Start!");
